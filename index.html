@@ -7,52 +7,56 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
   <style>
-    /* Osnovni stilovi za sugestije i izabrane usluge */
+      /* Osnovni stilovi za sugestije i izabrane usluge */
     .suggestions-list {
-      border: 1px solid #aaa;
-      max-height: 120px;
-      overflow-y: auto;
-      background: #fff;
-      position: absolute;
-      width: 90%;
-      z-index: 1000;
-      cursor: pointer;
-      display: none;
-      padding: 0;
-      margin-top: 2px;
-      border-radius: 4px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      border: 1px solid #aaa; /* ivica liste sugestija */
+      max-height: 120px; /* maksimalna visina, dodaje scroll ako ima više stavki */
+      overflow-y: auto; /* vertikalni scroll kad je potrebno */
+      background: #fff; /* bela pozadina liste */
+      position: absolute; /* apsolutno pozicioniranje unutar roditelja */
+      width: 90%; /* širina liste */
+      z-index: 1000; /* da bude iznad ostalih elemenata */
+      cursor: pointer; /* pokazivač pokazuje da je klikabilno */
+      display: none; /* inicijalno skriveno */
+      padding: 0; /* uklanja default padding */
+      margin-top: 2px; /* mala razdaljina od inputa */
+      border-radius: 4px; /* blago zaobljeni uglovi */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* blaga senka */
     }
     .suggestions-list div {
-      padding: 8px 10px;
-      border-bottom: 1px solid #ddd;
+      padding: 8px 10px; /* unutrašnji razmak stavki */
+      border-bottom: 1px solid #ddd; /* linija između stavki */
     }
     .suggestions-list div:hover {
-      background-color: #f0e6ff;
+      background-color: #f0e6ff; /* boja pri prelasku mišem */
     }
+
+    /* Izabrane usluge prikazane kao tagovi */
     .selected-services {
       margin-top: 8px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
+      display: flex; /* fleksboks da tagovi stoje u liniji */
+      flex-wrap: wrap; /* prelazak u novi red ako nema mesta */
+      gap: 6px; /* razmak između tagova */
     }
     .tag {
-      background-color: #6a1b9a;
-      color: white;
+      background-color: #6a1b9a; /* boja tagova */
+      color: white; /* boja teksta u tagovima */
       padding: 5px 10px;
-      border-radius: 20px;
+      border-radius: 20px; /* zaobljeni tagovi */
       font-size: 0.9rem;
       display: flex;
-      align-items: center;
-      gap: 6px;
+      align-items: center; /* centriranje sadržaja vertikalno */
+      gap: 6px; /* razmak između teksta i dugmeta za uklanjanje */
     }
     .tag .remove-btn {
-      cursor: pointer;
+      cursor: pointer; /* pokazuje da može da se klikne */
       font-weight: 700;
-      user-select: none;
+      user-select: none; /* sprečava selektovanje teksta */
     }
+
+    /* Stilizovanje fieldset-a */
     fieldset {
-      position: relative;
+      position: relative; /* da sugestije mogu biti apsolutno pozicionirane unutar njega */
       margin-bottom: 20px;
       padding: 15px 15px 35px;
       border-radius: 8px;
@@ -65,14 +69,18 @@
       border: 1px solid #aaa;
       border-radius: 4px;
     }
+
+    /* Labeli */
     label {
       font-weight: 600;
       margin-top: 10px;
       display: block;
     }
+
+    /* Input polja različitih tipova */
     input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
       width: 100%;
-      max-width: 350px;
+      max-width: 350px; /* ograničava širinu inputa */
       padding: 8px;
       margin-top: 3px;
       margin-bottom: 6px;
@@ -80,41 +88,47 @@
       border: 1px solid #ccc;
       font-size: 1rem;
     }
+
+    /* Dugme za slanje forme */
     button[type="submit"] {
-      background-color: #6a1b9a;
-      color: white;
+      background-color: #6a1b9a; /* osnovna boja dugmeta */
+      color: white; /* tekst na dugmetu */
       padding: 10px 22px;
       font-size: 1.1rem;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease; /* animacija boje pri hover */
       margin-top: 12px;
     }
     button[type="submit"]:hover {
-      background-color: #4a148c;
+      background-color: #4a148c; /* tamnija boja pri hover */
     }
+
+    /* Greške validacije */
     .error {
-      color: red;
+      color: red; /* crvena boja za greške */
       font-size: 0.85rem;
-      min-height: 18px;
+      min-height: 18px; /* prostor rezervisan da ne "skače" dizajn */
       display: block;
       margin-bottom: 5px;
     }
-    /* Za pozicioniranje sugestija unutar fieldseta */
+
+    /* Ponovno pozicioniranje fieldset-a (sugestije unutar njega) */
     fieldset {
       position: relative;
     }
-    /* Responsive tweak */
+
+    /* Responsive podešavanja */
     @media (max-width: 480px) {
       input[type="text"], input[type="email"], input[type="tel"], input[type="date"] {
-        max-width: 100%;
+        max-width: 100%; /* input zauzima celu širinu na malim ekranima */
       }
       .suggestions-list {
-        width: 100% !important;
+        width: 100% !important; /* lista sugestija zauzima celu širinu inputa */
       }
     }
-  </style>
+</style>
 </head>
 <body>
 
