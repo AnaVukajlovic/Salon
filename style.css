@@ -12,7 +12,7 @@ html, body {
 /* GLOBAL */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #FAEC62; /* glavna tematska žuta */
+  background: #dbb6c5; 
   color: #222; /* čitljiv tamni tekst */
   display: flex;
   flex-direction: column;
@@ -28,7 +28,7 @@ main {
 
 /* HEADER */
 header {
-  background-color: #5584AD; 
+  background-color: #a3758c; 
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -75,7 +75,7 @@ nav ul li a:hover {
 /* SECTIONS */
 section {
   display: none;
-  background: #ffffffee; 
+  background: #e2d7da; 
   padding: 30px 20px;
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.12);
@@ -121,7 +121,7 @@ form textarea {
   padding: 10px 12px;
   border: 2px solid #6EB8FA; 
   border-radius: 6px;
-  background: #fff;
+  background: #df9db2;
   font-size: 1rem;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
   box-shadow: 0 3px 6px rgba(0,0,0,0.06);
@@ -183,50 +183,58 @@ form button:hover {
   box-shadow: 0 6px 16px rgba(0,0,0,0.15);
 }
 
-/* PRICE LIST */
+/* Grid za kartice: 2 po redu */
 .price-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
+/* Stil kartica */
 .price-item {
-  background: #ffffffee;
+  background: #df9db2;
   padding: 25px 20px;
   border-radius: 10px;
   border: 2px solid #6EB8FA;
   box-shadow: 0 6px 16px rgba(0,0,0,0.12);
-  text-align: center;
+  text-align: left; /* da stavke budu levo */
 }
 
 .price-item h3 {
-  color: #5584AD;
+  color: #ffffff;
   margin-bottom: 20px;
   font-size: 1.3rem;
+  display: flex;
+  justify-content: center;
 }
 
+/* Stavke unutar kartica */
 .price-list {
   list-style: none;
   padding: 0;
-  margin: 0 auto;
-  max-width: 260px;
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 10px 15px;
-  color: #222;
+  margin: 0;
 }
 
-.price-list span:last-child {
-  text-align: right;
+.price-list li {
+  display: flex;
+  justify-content: space-between; /* naziv levo, cena desno */
+  padding: 5px 0; /* razmak između stavki */
+  border-bottom: 1px solid #eee; /* opcionalno */
+}
+
+.price-list li:last-child {
+  border-bottom: none; /* zadnja stavka bez linije */
+}
+
+.price-list li span:last-child {
   font-weight: 700;
   color: #5584AD;
 }
-
 /* FOOTER */
 footer {
-  background-color: #5584AD;
+  background-color: #a3758c;
   color: white;
   padding: 15px 10px;
   text-align: center;
