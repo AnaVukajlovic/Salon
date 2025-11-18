@@ -1,6 +1,6 @@
 /* Reset i osnovno */
 *, *::before, *::after {
-  box-sizing: border-box; /* Sve elemente postavljamo da koriste border-box za lakše pozicioniranje */
+  box-sizing: border-box;
 }
 
 html, body {
@@ -10,61 +10,61 @@ html, body {
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Osnovni font */
-  background: #FAEC62; /* Pozadina sajta */
-  color: #4a148c; /* Osnovna boja teksta */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #FAEC62; /* svetla žuta pozadina */
+  color: #5584AD; /* osnovna plava za tekst */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column; /* Omogućava da footer bude na dnu */
-  min-height: 100vh;
 }
 
 /* Glavni sadržaj raste i guraju footer na dno */
 main {
-  flex-grow: 1; /* Main zauzima preostali prostor */
-  max-width: 960px; /* Maksimalna širina */
-  width: 90%; /* Fleksibilna širina */
-  margin: 40px auto; /* Centriranje i razmak od vrha */
+  flex-grow: 1;
+  max-width: 960px;
+  width: 90%;
+  margin: 40px auto;
 }
 
 /* Header */
 header {
-  background-color: #5584AD; /* Boja headera */
+  background-color: #5584AD;
   color: white;
   padding: 15px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky; /* Ostaje pri vrhu pri skrolovanju */
+  position: sticky;
   top: 0;
   z-index: 100;
 }
 
 header h1 {
   margin: 0;
-  font-size: 1.8rem; /* Veličina naslova */
+  font-size: 1.8rem;
 }
 
 /* Navigacija */
 nav ul {
-  list-style: none; /* Uklanja tačke sa liste */
+  list-style: none;
   margin: 0;
   padding: 0;
-  display: flex; /* Horizontalni raspored linkova */
-  gap: 20px; /* Razmak između linkova */
+  display: flex;
+  gap: 20px;
 }
 
 nav ul li a {
-  color: white; /* Boja linkova */
+  color: white;
   text-decoration: none;
   font-weight: 600;
   font-size: 1.1rem;
-  transition: color 0.3s ease; /* Glatka promena boje pri hover */
+  transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-  color: #F728FA; /* Hover boja linka */
+  color: #F728FA;
 }
 
 /* Hamburger meni - sakriven na desktop */
@@ -75,18 +75,19 @@ nav ul li a:hover {
   color: white;
 }
 
-/* Aktivna sekcija */
-section.active {
-  display: block; /* Prikazuje trenutno aktivnu sekciju */
+/* Sekcije */
+section {
+  display: none;
+  background: #6EB8FA;
+  color: #5584AD;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(85, 132, 173, 0.15);
+  margin-bottom: 50px;
 }
 
-section {
-  display: none; /* Po defaultu sve sekcije skrivene */
-  padding: 30px 20px;
-  background: #6EB8FA;
-  border-radius: 10px;
-  box-shadow: 0 0 12px rgba(106, 27, 154, 0.15); /* Blaga senka */
-  margin-bottom: 50px;
+section.active {
+  display: block;
 }
 
 /* Forme */
@@ -94,31 +95,101 @@ form {
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  margin: 0 auto; /* Centriranje forme */
+  margin: 0 auto;
 }
 
 form label {
   margin-top: 15px;
   font-weight: 600;
+  color: #5584AD;
 }
 
-form input, form select {
+input, select, textarea {
   margin-top: 6px;
   padding: 8px 12px;
-  border: 1.5px solid #29465f; /* Boja ivica */
+  border: 2px solid #F728FA;
   border-radius: 6px;
   font-size: 1rem;
-  outline-color: #9684fa;
-  transition: border-color 0.3s ease;
+  color: #5584AD;
+  outline-color: #6EB8FA;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-form input:focus, form select:focus {
-  border-color: #4a148c; /* Boja pri fokusu */
+input:focus, select:focus, textarea:focus {
+  border-color: #F855FA;
+  box-shadow: 0 0 5px #F728FA;
 }
 
-form button {
-  margin-top: 25px;
+fieldset {
+  border: 2px solid #5584AD;
+  background: #FAEC62;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+legend {
+  color: #F728FA;
+  font-weight: 700;
+}
+
+/* Sugestije i izabrane usluge */
+.suggestions-list {
+  border: 1px solid #6EB8FA;
+  background: #fff;
+  max-height: 120px;
+  overflow-y: auto;
+  position: absolute;
+  width: 90%;
+  z-index: 1000;
+  cursor: pointer;
+  display: none;
+  padding: 0;
+  margin-top: 2px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.suggestions-list div {
+  padding: 8px 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.suggestions-list div:hover {
   background-color: #F855FA;
+}
+
+.selected-services {
+  margin-top: 8px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  background-color: #F728FA;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tag .remove-btn {
+  cursor: pointer;
+  font-weight: 700;
+  user-select: none;
+  background-color: #FAEC62;
+  color: #5584AD;
+}
+
+/* Dugmići */
+button[type="submit"] {
+  margin-top: 25px;
+  background-color: #F728FA;
   color: white;
   font-weight: 700;
   padding: 12px;
@@ -129,140 +200,74 @@ form button {
   transition: background-color 0.3s ease;
 }
 
-form button:hover {
-  background-color: #4a148c;
-}
-
-/* Greške validacije */
-.error {
-  color: #d32f2f; /* Crvena boja za greške */
-  font-size: 0.9rem;
-  margin-top: 4px;
-  height: 18px;
-}
-
-/* Kontakt sekcija */
-.contact-container {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.contact-info {
-  flex: 1 1 300px; /* Fleksibilna širina */
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: #6a1b9a; /* Boja teksta */
-}
-
-.map-container iframe {
-  border-radius: 10px;
-  box-shadow: 0 0 8px rgba(106, 27, 154, 0.2);
-  max-width: 400px;
-  width: 100%;
-  height: 300px;
+button[type="submit"]:hover {
+  background-color: #F855FA;
 }
 
 /* Cenovnik */
 .price-container {
-  display: grid; /* Grid raspored */
-  grid-template-columns: repeat(2, 1fr); /* Dve kolone */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 20px;
   max-width: 700px;
   margin: 0 auto;
-  box-shadow: 0 0 15px rgba(74, 20, 140, 0.15);
 }
 
 .price-item {
-  background: rgba(220, 211, 225, 0);
-  padding: 25px 20px 30px 20px;
+  border: 2px solid #6EB8FA;
+  background-color: #FAEC62;
+  padding: 25px 20px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(74, 20, 140, 0.15);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .price-item h3 {
-  margin-top: 0;
+  color: #F728FA;
   margin-bottom: 20px;
-  color: #6a1b9a; /* Naslov cene */
-  font-size: 1.4rem;
-  font-weight: 700;
-}
-
-.price-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 auto;
-  max-width: 280px;
-  display: grid; /* Grid za listu cena */
-  grid-template-columns: 1fr auto; /* Tekst levo, cena desno */
-  column-gap: 15px;
-  row-gap: 10px;
-  text-align: left;
-  font-size: 1rem;
-  color: #4a148c;
-}
-
-.price-list li {
-  display: contents; /* Omogućava da span-ovi budu grid elementi */
 }
 
 .price-list li span:first-child {
-  grid-column: 1 / 2;
   font-weight: 600;
 }
 
 .price-list li span:last-child {
-  grid-column: 2 / 3;
-  text-align: right;
+  color: #5584AD;
   font-weight: 700;
-  color: #c2185b; /* Boja cene */
 }
 
 /* Footer */
 footer {
+  background-color: #5584AD;
+  color: #FAEC62;
   text-align: center;
   padding: 15px 10px;
-  background-color: #6a1b9a;
-  color: white;
-  text-shadow: 0 0 10px rgb(255, 255, 255);
   font-weight: 600;
   font-size: 1rem;
-  flex-shrink: 0; /* Footer ne skraćuje visinu */
+  flex-shrink: 0;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .price-container {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     max-width: 90%;
-    margin: 0 auto;
   }
   .price-item {
     margin-bottom: 30px;
     max-width: 100%;
     padding: 20px;
   }
-  .price-list {
-    max-width: 100%;
-    grid-template-columns: 1fr auto;
-  }
-  
   nav ul {
     flex-direction: column;
-    display: none; /* Sakriven na mobilnom dok se ne aktivira */
-    background-color: #6a1b9a;
+    display: none;
+    background-color: #5584AD;
     position: absolute;
     top: 60px;
     right: 20px;
     border-radius: 8px;
     padding: 10px 0;
     width: 150px;
-    box-shadow: 0 0 10px rgba(74, 20, 140, 0.3);
+    box-shadow: 0 0 10px rgba(85, 132, 173, 0.3);
   }
   nav ul.show {
     display: flex;
@@ -271,34 +276,24 @@ footer {
     margin: 8px 0;
   }
   .hamburger {
-    display: block; /* Hamburger vidljiv na mobilnom */
+    display: block;
+  }
+  form {
+    width: 90%;
+  }
+  input, select, textarea {
+    width: 100%;
+  }
+  .suggestions-list {
+    width: 100% !important;
   }
 }
 
-/* Ostali mali dodaci */
-h2 {
-  color: #4a148c;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-p {
-  color: #4a148c;
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-
-/* Stil za ukupnu cenu u formi */
-#totalPrice {
-  font-weight: 700;
-  margin-top: 15px;
-  color: #6a1b9a;
-}
-
-@media (max-width: 600px) {
-  .price-container {
-    grid-template-columns: 1fr; /* Jedna kolona za male ekrane */
-    max-width: 90%;
+@media (max-width: 480px) {
+  section {
+    padding: 20px 15px;
+  }
+  header h1 {
+    font-size: 1.5rem;
   }
 }
